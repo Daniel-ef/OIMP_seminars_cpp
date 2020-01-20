@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/dlefimov/Documents/OIMP_seminars_cpp/196/seminar3/random.cpp
+iostream
+-
+random
+-
+ctime
+-
+
