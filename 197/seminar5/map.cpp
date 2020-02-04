@@ -43,6 +43,13 @@ int main() {
     std::cout << kv.first << " " << kv.second << '\n';
   }
 
+  for (const auto& [key, value] : ages_u) {
+    std::cout << key << " " << value << '\n';
+  }
+
+  std::vector<std::string> v;
+  std::sort(v.begin(), v.end(), std::less<std::string>());
+
   std::map<Student, size_t> students{{{"Ivan", 20}, 1}, {{"Olya", 25}, 2}};
   for (const auto &kv : students) {
     std::cout << kv.first.name << " " << kv.first.age << " " << kv.second
