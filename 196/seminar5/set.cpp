@@ -15,4 +15,12 @@ int main() {
   std::cout << *ret.first << " " << ret.second << '\n';
 
   s.erase(ret.first);
+
+
+  std::vector<int> v{1, 2};
+  std::vector<int>::iterator it = v.begin();
+  ++it;
+  *it;
+  it + 5;
+  std::next(it, 5);
 }
