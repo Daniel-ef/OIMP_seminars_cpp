@@ -3,4 +3,4 @@ project(seminar_10)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(seminar_10 deque.cpp)
+add_executable(seminar_10 back_inserter.cpp)
