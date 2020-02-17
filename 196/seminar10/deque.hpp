@@ -45,8 +45,96 @@ struct Deque {
   std::vector<T> end_v;
 };
 
+
+template<typename T>
+struct Deque1 {
+
+  T front() const {
+    return vec_lst[0][to_push_front + 1];
+  }
+
+  T back() const {
+    return vec_lst.back()[to_push_back - 1];
+  }
+
+  void push_back(const T& elem) {
+    if (vec_lst.empty()) {
+      std::vector<T> temp(const_size);
+      vec_lst.push_back(temp);
+      --to_push_front;
+      this->push_back(elem);
+    } else if (to_push_back < const_size - 1) {
+      ++dsize;
+      vec_lst.back()[to_push_back] = elem;
+      ++to_push_back;
+    } else {
+      ++dsize;
+      vec_lst.back()[to_push_back] = elem;
+      to_push_back = 0;
+      std::vector<T> temp(const_size);
+      vec_lst.push_back(temp);
+    }
+  }
+
+  void push_front(const T& elem) {
+    if (vec_lst.empty()) {
+      std::vector<T> temp(const_size);
+      vec_lst.push_back(temp);
+      ++to_push_back;
+      this->push_front(elem);
+    } else if (to_push_front > 0) {
+      ++dsize;
+      vec_lst[0][to_push_front] = elem;
+      --to_push_front;
+    } else {
+      ++dsize;
+      vec_lst[0][to_push_front] = elem;
+      to_push_front = const_size - 1;
+      std::vector<T> temp(const_size);
+      vec_lst.insert(vec_lst.begin(), temp);
+    }
+  }
+
+  void pop_back() {
+    if (dsize != 0) {
+      --dsize;
+      if (to_push_back == 0) {
+        to_push_back = const_size - 1;
+        vec_lst.pop_back();
+      } else {
+        --to_push_back;
+      }
+    }
+  }
+
+  void pop_front() {
+    if (dsize != 0) {
+      --dsize;
+      if (to_push_front == const_size - 1) {
+        to_push_front = 0;
+        vec_lst.erase(vec_lst.begin());
+      } else {
+        ++to_push_front;
+      }
+    }
+  }
+
+  T operator[] (size_t index) {
+    return vec_lst[(to_push_front + 1 + index) / const_size][(to_push_front + 1 + index) % const_size];
+  }
+
+  size_t size() {
+    return dsize;
+  }
+
+  std::vector<std::vector<T>> vec_lst;
+  size_t dsize = 0;
+  size_t shift = 3, const_size = 10;
+  size_t to_push_front = const_size / 2 , to_push_back = const_size / 2;
+};
+
 int main() {
-  Deque<int> deque;
+  Deque1<int> deque;
   deque.push_front(1);
   deque.push_front(2);
   deque.push_back(6);
@@ -68,9 +156,4 @@ int main() {
   deque.pop_front();
   assert(deque.front() == 1);
   assert(deque.back() == 6);
-  deque[0] = 10;
-
-  const auto& deque1 = deque;
-  assert(deque1[0] == 10);
-
 }
