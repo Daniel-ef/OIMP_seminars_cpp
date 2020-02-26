@@ -14,7 +14,9 @@ void print_vector(std::vector<int> v) {
   }
   std::cout << std::endl;
 
-//  std::copy(v.begin(), v.end(), std::ostream_iterator<int>(std::cout, " "));
+  Container::value_type
+  std::copy(v.begin(), v.end(),
+      std::ostream_iterator<Container::value_type>(std::cout, " "));
 }
 
 int main() {

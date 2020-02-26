@@ -6,7 +6,7 @@ public:
     std::cout << "1" << std::endl;
   }
 
-  explicit Simple(size_t count) : id_(count) {
+  Simple(size_t count) : id_(count) {
     std::cout << "2" << std::endl;
   }
 
@@ -57,6 +57,8 @@ int main() {
 
     Simple s3{s2};
 
+
+//    Simple s4 = Simple{Simple{3}};
     Simple s4{Simple{3}};
 
   }

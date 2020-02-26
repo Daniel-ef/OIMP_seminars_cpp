@@ -7,5 +7,6 @@ int main() {
   v.push_back(Student{3});
 
   v.emplace_back(5);
+  (void*)v[0].Id();
 }
 

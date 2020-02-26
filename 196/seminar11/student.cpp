@@ -18,7 +18,7 @@ int main() {
 
     Student s2{s0};
 
-    const Student s3{Student{}};
+    const Student s3{std::move(s2)};
     s3.Id();
 
     print_student(Student{1});
