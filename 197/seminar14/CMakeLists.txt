@@ -4,4 +4,4 @@ project(seminar_13)
 set(Cmake_CXX_Flags "O0")
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(seminar_13 shared_ptr.cpp)
+add_executable(seminar_13 pointer.cpp)

@@ -47,9 +47,9 @@ UniquePtr<T>&& print_value(UniquePtr<T>&& unique_ptr) {
 int main() {
   int* i_ptr = new int(5);
   UniquePtr<int> unique_ptr(i_ptr);
-  unique_ptr = print_value(std::move(unique_ptr));
+  UniquePtr<int> returned_unique_ptr = print_value(std::move(unique_ptr));
 
-  UniquePtr<int> another_ptr(std::move(unique_ptr));
+  UniquePtr<int> another_ptr(std::move(returned_unique_ptr));
 //  print_value(another_ptr);
 
 //  if (*i_ptr) {

@@ -4,4 +4,4 @@ project(seminar_14)
 set(Cmake_CXX_Flags "O0")
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(seminar_14 task.cpp)
+add_executable(seminar_14 auto_ptr.cpp)
