@@ -6,11 +6,10 @@ public:
     ++id_;
   }
 
-  virtual double CalcSquare() = 0;
-  virtual void FillPerimeter() = 0;
+  virtual double CalcSquare();
+  virtual void FillPerimeter();
 
   double perimeter;
-
 private:
   static size_t id_;
 };
@@ -27,7 +26,7 @@ public:
     ++perimeter;
   }
 
-  double CalcSquare()  {
+  double CalcSquare() final {
     return 0.0;
   }
 };
